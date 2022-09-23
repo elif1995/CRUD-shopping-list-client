@@ -1,4 +1,9 @@
+*{
+  font-family:'Courier New', Courier, monospace
+}
+
 .App {
+  
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -8,11 +13,20 @@
   padding-bottom: 20px;
 }
 
+.app-title {
+  background-color: rgb(215, 255, 215);
+  width: 100%;
+  margin:0;
+  border-radius: 5px;
+  padding:5px;
+  border-bottom: 3px solid grey;
+}
+
 
 
 button{
-  width:100px;
-  height: 80px;
+  width: 100px;
+  height: 100px;
   cursor: pointer;
 }
 
@@ -20,26 +34,29 @@ button{
 
 
 .app-items{
+  width: 98vw;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  gap: 5px;
+  margin: 5px 0;
   justify-content:center;
   align-items:center;
+  gap:5px;
 }
 
 
 .items{
   min-height: 50px;
-  width: 100%;
-  padding: 10px;
+  min-width: 95%;
+  
+  padding: 5px;
   border-radius: 5px;
   background: #ffffff;
   border:1px solid grey;
-  box-shadow:  5px 2px 5px lightgrey;
+  box-shadow:  2px 2px 1px lightgrey;
   display: flex;
   flex-direction: row;
-  justify-content:space-around;
+  justify-content:space-evenly;
   
 }
 
@@ -49,20 +66,24 @@ button{
   justify-content: start;
   align-items:center;
   flex: 0.5;
+  min-width: 150px;
+  font-weight: 400;
 }
 
 @media screen and (max-width: 768px) {
   .items p{
-    min-width: 50%;
-    font-size:12px;
-    flex:0.5
-  }
-  input{
     
-    font-size:12px
+    font-size:10px;
+    flex:0.5;
+    margin-right:10px;
+  }
+  
+  input{
+    width:80px;
+    font-size:7px;
   }
   button{
-    width:60px;
-    height: 60px
+    width:50px;
+    height: 50px
   }
 }

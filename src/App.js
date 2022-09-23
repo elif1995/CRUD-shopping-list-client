@@ -38,9 +38,9 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Food Store App</h1>
+      <h1 className="app-title">Food Store App</h1>
 
-      <button style={{ background:'transparent', boxShadow: ' 5px 5px 35px lightgrey', border:'none', cursor: 'pointer'}} onClick={() => setAddFood(!addFood)}>Add <PlusCircleOutlined style={{color: 'green'}}/></button>
+      <button style={{ background:'transparent', boxShadow: ' 3px 2px 8px lightgrey', border:'none', cursor: 'pointer'}} onClick={() => setAddFood(!addFood)}>Add <PlusCircleOutlined style={{color: 'green'}}/></button>
 
       {addFood && <div className="App">
       <lable>Food Name</lable>
@@ -54,13 +54,16 @@ function App() {
       <div className="app-items">
       {foodList.map(({foodName,howMuchToBuy,_id}) => 
         (<div className="items"> 
-          <p>name: <span style={{color: 'green', border: '1px dotted green', padding: '5px',marginRight: '5px'}}> {foodName} </span> quantity: <span style={{color: 'green', border: '1px dotted green', padding: '5px'}}>{howMuchToBuy}</span> </p>
+          <p>name: <span style={{color: 'lightgreen',fontWeight: '700',  padding: '5px',marginRight: '5px'}}> {foodName} </span> 
+          quantity: <span style={{color: 'lightgreen', fontWeight: '700', padding: '5px'}}>{howMuchToBuy}</span> </p>
           
           <input type="text" 
                   placeholder="Change Food Count..." 
                     onChange={(e) => {setNewFoodNumber(e.target.value);}}/>
+          <>
           <button style={{backgroundColor: 'lightyellow', border: '1px solid lightgrey'}} onClick={() => {updateFood(_id)}}><EditOutlined/></button>
           <button style={{backgroundColor: 'pink', border: '1px solid lightgrey'}} onClick={() => {deleteFood(_id)}}><DeleteOutlined/></button>
+          </>
           <div ref={lastFood}></div>
         </div>)
       )}
