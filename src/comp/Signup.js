@@ -15,7 +15,7 @@ const Signup = ({setNeedSignup}) => {
   const addToUsers = () => {
     Axios.post('https://shopping-list-frenkin.herokuapp.com/signup', {email: email, password: password})
     
-    setNeedSignup(false);
+    window.location.reload()
   }
 
   return(
