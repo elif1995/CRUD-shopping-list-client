@@ -72,7 +72,7 @@ const Login = ({setIsLogged}) => {
       <br/>
       <button onClick={() => setNeedsSignup(true)} style={{color: 'red'}}>I Dont Have A User</button>
       
-      </form>: <Signup/>}
+      </form>: <Signup setNeedSignup={setNeedsSignup}/>}
       </>
   )
 }

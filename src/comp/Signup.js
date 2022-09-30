@@ -2,7 +2,7 @@ import {useState, useEffect} from 'react';
 import Axios from 'axios';
 
 
-const Signup = () => {
+const Signup = ({setNeedSignup}) => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
@@ -15,7 +15,7 @@ const Signup = () => {
   const addToUsers = () => {
     Axios.post('https://shopping-list-frenkin.herokuapp.com/signup', {email: email, password: password})
     
-    
+    setNeedSignup(false);
   }
 
   return(
