@@ -50,7 +50,7 @@ function App() {
     {!isLogged ? (<Login setIsLogged={setIsLogged}/>) : (<div className="App">
       
       
-      <h1 className="app-title">Food Store App</h1>
+      <h1 className="app-title">Food List App</h1>
       <div className="user-controle-section" ><Avatar style={{ backgroundColor: 'lightgreen', verticalAlign: 'middle' }} size="large">
         {currentUser[0]}
         </Avatar> 

@@ -10,13 +10,14 @@ import 'antd/dist/antd.css';
 
 const Login = ({setIsLogged}) => {
   const [email, setEmail] = useState('')
+  const [userName, setUserName] = useState('')
   const [password, setPassword] = useState('');
   const [needSignup, setNeedsSignup] = useState(false)
   const [userFromData, setUserFromData] = useState([])
   const {setCurrentUser} = useContext(UserContext)
 
   const error = () => {
-    message.error('email or password is incorrect');
+    message.error('user or password is incorrect');
   };
   const success = () => {
     message.success('you are now logged in');
@@ -35,23 +36,23 @@ const Login = ({setIsLogged}) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const emailFinder = [];
+    const userFinder = [];
 
     userFromData.forEach((user) => {
-      if (user.email === email){
-        emailFinder.push(user)
+      if (user.userName === userName){
+        userFinder.push(user)
       }
     })
 
     
     
-    if(email === emailFinder[0].email && password === emailFinder[0].password)
+    if(userName === userFinder[0].userName && password === userFinder[0].password)
     {
       setIsLogged(true)
-      setCurrentUser(email)
+      setCurrentUser(userName)
       success()
     }else{
-      console.log("email or password is incorrect");
+      console.log("user name or password is incorrect");
       error()
     }
   }
@@ -64,11 +65,12 @@ const Login = ({setIsLogged}) => {
     
     {!needSignup ? <form className="login" onSubmit={handleSubmit}>
       <h1 style={{color: 'green', fontWeight:'bold'}}> Welcome to Shop List </h1>
-      <p>please enter your email and password to continue</p>
+      <p>please enter your User Name and password to continue</p>
       
 
-      <lable >Email:</lable>
-      <input type="email" value={email} name="email" onChange={(e) => setEmail(e.target.value)}/>
+      
+      <lable >User Name:</lable>
+      <input type="name" value={userName} name="userName" onChange={(e) => setUserName(e.target.value)}/>
 
       <lable>Password:</lable>
       <input type="password" value={password} name="password" onChange={(e) => setPassword(e.target.value)}/>    
@@ -77,7 +79,7 @@ const Login = ({setIsLogged}) => {
       <br/>
       <button style={{ background:'transparent',color:'red', boxShadow: ' 2px 2px 5px lightgrey', border:'none', cursor: 'pointer', padding: '10px 50px', borderRadius: '5px',}} onClick={() => setNeedsSignup(true)} >I Dont Have A User</button>
       
-      </form>: <Signup setNeedSignup={setNeedsSignup}/>}
+      </form>: <Signup userFromData={userFromData} setNeedSignup={setNeedsSignup}/>}
       </>
   )
 }
