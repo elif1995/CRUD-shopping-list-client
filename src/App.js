@@ -51,9 +51,9 @@ function App() {
       
       
       <h1 className="app-title">Food List App</h1>
-      <div className="user-controle-section" ><Avatar style={{ backgroundColor: 'lightgreen', verticalAlign: 'middle' }} size="large">
-        {currentUser[0]}
-        </Avatar> 
+      <div className="user-controle-section" ><Card style={{ backgroundColor: 'lightgreen', verticalAlign: 'middle' ,borderRadius:"10px"}} size="large">
+        {currentUser}
+        </Card> 
         <button onClick={handleSignOut}>sign out</button>
       </div>
       {!addFood ? <button style={{ background:'transparent', boxShadow: ' 2px 2px 5px lightgrey', border:'none', cursor: 'pointer', padding: '10px 50px', borderRadius: '5px',}} onClick={() => setAddFood(!addFood)}>Add <PlusCircleOutlined style={{color: 'green'}}/></button> : <button style={{ background:'transparent', boxShadow: ' 2px 2px 5px lightgrey', border:'none', cursor: 'pointer', padding: '10px 50px', borderRadius: '5px',}} onClick={() => setAddFood(!addFood)}>Cancle <CloseCircleOutlined style={{color: 'red'}}/></button>}

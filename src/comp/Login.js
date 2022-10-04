@@ -36,25 +36,43 @@ const Login = ({setIsLogged}) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const userFinder = [];
-
-    userFromData.forEach((user) => {
-      if (user.userName === userName){
-        userFinder.push(user)
-      }
-    })
-
-    
-    
-    if(userName === userFinder[0].userName && password === userFinder[0].password)
-    {
+    if(userFromData.find(user => (user.userName === userName && user.password === password) )){
+      
       setIsLogged(true)
       setCurrentUser(userName)
       success()
-    }else{
-      console.log("user name or password is incorrect");
-      error()
-    }
+      }
+      
+
+    // const userFinder = [];
+    // let shouldSkip = false
+
+    // userFromData.forEach((user) => {
+    //   if(shouldSkip) {
+    //     return;
+    //   }
+    //   if (user.userName === userName ) {
+    //     userFinder.push(user)
+    //   }
+    //   else{
+    //     console.log("user name  is incorrect");
+    //     error();
+    //     shouldSkip = true;
+    //     return;
+    //   }
+    // })
+
+    
+    
+    // if( password === userFinder[0].password)
+    // {
+    //   setIsLogged(true)
+    //   setCurrentUser(userName)
+    //   success()
+    // }else{
+    //   error()
+    //   console.log("user name or password is incorrect");
+    // }
   }
 
   
