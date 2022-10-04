@@ -41,6 +41,8 @@ const Login = ({setIsLogged}) => {
       setIsLogged(true)
       setCurrentUser(userName)
       success()
+      }else{
+        error()
       }
       
 
