@@ -32,17 +32,24 @@ const Login = ({setIsLogged}) => {
     
   },[])
 
-
-  const handleSubmit = async (e) => {
+  
+  const handleSubmit = (e) => {
     e.preventDefault();
 
-    if(userFromData.find(user => (user.userName === userName && user.password === password) )){
+    const userFinder = userFromData.find(user => ( userName ) )
+    const passwordMachine = userFinder.password === password
+
+    
+    
+
+    if( userFinder && passwordMachine){
       
       setIsLogged(true)
       setCurrentUser(userName)
       success()
       }else{
         error()
+        
       }
       
 
@@ -90,10 +97,10 @@ const Login = ({setIsLogged}) => {
 
       
       <lable >User Name:</lable>
-      <input type="name" value={userName} name="userName" onChange={(e) => setUserName(e.target.value)}/>
+      <input type="name" value={userName} name="userName" onChange={(e) => setUserName(e.target.value)} required/>
 
       <lable>Password:</lable>
-      <input type="password" value={password} name="password" onChange={(e) => setPassword(e.target.value)}/>    
+      <input type="password" value={password} name="password" onChange={(e) => setPassword(e.target.value)} required/>    
 
       <button style={{ background:'transparent', boxShadow: ' 2px 2px 5px lightgrey', border:'none', cursor: 'pointer', padding: '10px 50px', borderRadius: '5px',}} type="submit" >Login</button> 
       <br/>
