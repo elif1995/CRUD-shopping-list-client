@@ -72,9 +72,9 @@ const App = () => {
         {isModalOpen && <div className="adding-modal"><div className="App">
             <button onClick={handleCancel}>X</button>
           <lable style={{fontWeight:'bold'}}>Food Name</lable>
-          <input type="text" onChange={(e) => {setFoodName(e.target.value);}}/>
+          <input value={foodName} type="text" onChange={(e) => {setFoodName(e.target.value);}}/>
           <lable style={{fontWeight:'bold'}}>How much to buy</lable>
-          <input type="text" onChange={(e) => {setNumberToBuy(e.target.value);}}/>
+          <input value={numberToBuy} type="text" onChange={(e) => {setNumberToBuy(e.target.value);}}/>
           <button className="open-modal-button" style={{background:'lightgreen', boxShadow: ' 2px 2px 3px lightgrey', border:'none', cursor: 'pointer', padding: '10px 50px', borderRadius: '5px',}} onClick={addToList }><PlusCircleOutlined style={{color: 'green'}} /></button></div></div>}
           </div>
           <br/>
