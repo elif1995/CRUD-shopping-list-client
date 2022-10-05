@@ -12,8 +12,8 @@ const App = () => {
   const lastFood = useRef(null);
   const [addFood, setAddFood] = useState(false);
   const [foodName, setFoodName] = useState("");
-  const [numberToBuy, setNumberToBuy] = useState(0);
-  const [newFoodNumber, setNewFoodNumber] = useState(0);
+  const [numberToBuy, setNumberToBuy] = useState('');
+  const [newFoodNumber, setNewFoodNumber] = useState('');
   const [foodList, setFoodList] = useState([])
   const [isLogged, setIsLogged] = useState(false);
   const {currentUser} = useContext(UserContext);
@@ -72,9 +72,9 @@ const App = () => {
         {isModalOpen && <div className="adding-modal"><div className="App">
             <button onClick={handleCancel}>X</button>
           <lable style={{fontWeight:'bold'}}>Food Name</lable>
-          <input value={foodName} type="text" onChange={(e) => {setFoodName(e.target.value);}}/>
+          <input value={foodName} type="text" onChange={(e) => {setFoodName(e.target.value);}} required/>
           <lable style={{fontWeight:'bold'}}>How much to buy</lable>
-          <input value={numberToBuy} type="text" onChange={(e) => {setNumberToBuy(e.target.value);}}/>
+          <input value={numberToBuy} type="text" onChange={(e) => {setNumberToBuy(e.target.value);}} required/>
           <button className="open-modal-button" style={{background:'lightgreen', boxShadow: ' 2px 2px 3px lightgrey', border:'none', cursor: 'pointer', padding: '10px 50px', borderRadius: '5px',}} onClick={addToList }><PlusCircleOutlined style={{color: 'green'}} /></button></div></div>}
           </div>
           <br/>
@@ -110,6 +110,7 @@ const App = () => {
               }}
               defaultValue="count"
               onChange={(e) => {setNewFoodNumber(e.target.value);}}
+              type="text"
             />
               <button style={{backgroundColor: 'lightyellow', border: '1px solid lightgrey',width: '20%',}} onClick={() => {updateFood(_id)}}><EditOutlined/></button>
             
