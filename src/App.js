@@ -4,19 +4,18 @@ import UserContext from './context/UserContext.js';
 import Axios from 'axios';
 import './App.css';
 import { DeleteOutlined, EditOutlined , PlayCircleOutlined, PlusCircleOutlined, CloseCircleOutlined} from '@ant-design/icons';
-import {  Card,  Input, Modal} from 'antd';
-import Signup from './comp/Signup.js';
+import { Input} from 'antd';
 import Login from './comp/Login.js';
 
-const App = () => {
-  const lastFood = useRef(null);
+function App  ()  {
+  
   const [addFood, setAddFood] = useState(false);
   const [foodName, setFoodName] = useState("");
   const [numberToBuy, setNumberToBuy] = useState('');
   const [newFoodNumber, setNewFoodNumber] = useState('');
   const [foodList, setFoodList] = useState([])
-  const [isLogged, setIsLogged] = useState(false);
-  const {currentUser} = useContext(UserContext);
+  
+  const {currentUser, isLogged, setIsLogged} = useContext(UserContext);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -60,8 +59,8 @@ const App = () => {
     window.location.reload()
   }
 
-  return (<>
-    {!isLogged ? (<Login setIsLogged={setIsLogged}/>) : (<div className="App">
+  return (<div>
+    {isLogged ?  <div className="App">
       
       
       <h1 className="app-title">Food List App</h1>
@@ -70,7 +69,7 @@ const App = () => {
         </div> 
         <button onClick={handleSignOut}>sign out</button>
         {isModalOpen && <div className="adding-modal"><div className="App">
-            <button onClick={handleCancel}>X</button>
+            <button onClick={() => handleCancel}>X</button>
           <lable style={{fontWeight:'bold'}}>Food Name</lable>
           <input value={foodName} type="text" onChange={(e) => {setFoodName(e.target.value);}} required/>
           <lable style={{fontWeight:'bold'}}>How much to buy</lable>
@@ -91,8 +90,10 @@ const App = () => {
       
       {/* <h1 style={{textDecoration: 'underline'}}>Food to Buy:</h1> */}
       <div className="app-items">
-      {foodList.filter(({userEmail}) => userEmail === currentUser).map(({foodName,howMuchToBuy,_id}) => 
-        (<div className="items-qty-container"><div className="qty">{howMuchToBuy}</div><div className="items"> 
+      {foodList.filter(user => user.userEmail === currentUser).map(({foodName,howMuchToBuy,_id}) => 
+        (<div className="items-qty-container">
+          <div className="qty">{howMuchToBuy}</div>
+           <div className="items"> 
           
           
           <p><span style={{color: 'rgb(90, 193, 90)',fontWeight: '700',  padding: '5px',marginLeft: '25px'}}> {foodName} </span> </p>
@@ -109,7 +110,7 @@ const App = () => {
                 fontSize: '15px'
               }}
               defaultValue="count"
-              onChange={(e) => {setNewFoodNumber(e.target.value);}}
+              onChange={(e) => {setNewFoodNumber(e.target.value)}}
               type="text"
             />
               <button style={{backgroundColor: 'lightyellow', border: '1px solid lightgrey',width: '20%',}} onClick={() => {updateFood(_id)}}><EditOutlined/></button>
@@ -117,11 +118,11 @@ const App = () => {
           </Input.Group>
           <button style={{backgroundColor: 'pink', border: '1px solid lightgrey'}} onClick={() => {deleteFood(_id)}}><DeleteOutlined/></button>
           </>
-          <div ref={lastFood}></div>
+          
         </div></div>)
       )}
       </div>
-    </div>)}</>
+    </div> : <Login /> }</div>
   );
 }
 

@@ -8,13 +8,13 @@ import Signup from './Signup.js';
 import 'antd/dist/antd.css';
 
 
-const Login = ({setIsLogged}) => {
+const Login = () => {
   const [email, setEmail] = useState('')
   const [userName, setUserName] = useState('')
   const [password, setPassword] = useState('');
   const [needSignup, setNeedsSignup] = useState(false)
   const [userFromData, setUserFromData] = useState([])
-  const {setCurrentUser} = useContext(UserContext)
+  const {setCurrentUser, setIsLogged} = useContext(UserContext)
 
   const error = () => {
     message.error('user or password is incorrect');
@@ -35,53 +35,25 @@ const Login = ({setIsLogged}) => {
   
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    const userFinder = userFromData.find(user => ( userName ) )
-    const passwordMachine = userFinder.password === password
-
     
-    
+    const userFinder = userFromData.find( user =>  user.userName === userName   )
+    const passwordMachine = (userFinder.password === password)
 
-    if( userFinder && passwordMachine){
+    console.log(userFromData.find( user =>  user.userName === userName   ))
+
+    if( userFinder && passwordMachine ){
       
-      setIsLogged(true)
-      setCurrentUser(userName)
-      success()
+        setIsLogged(true)
+        setCurrentUser(userName)
+        success()
+      
       }else{
         error()
         
       }
       
 
-    // const userFinder = [];
-    // let shouldSkip = false
-
-    // userFromData.forEach((user) => {
-    //   if(shouldSkip) {
-    //     return;
-    //   }
-    //   if (user.userName === userName ) {
-    //     userFinder.push(user)
-    //   }
-    //   else{
-    //     console.log("user name  is incorrect");
-    //     error();
-    //     shouldSkip = true;
-    //     return;
-    //   }
-    // })
-
-    
-    
-    // if( password === userFinder[0].password)
-    // {
-    //   setIsLogged(true)
-    //   setCurrentUser(userName)
-    //   success()
-    // }else{
-    //   error()
-    //   console.log("user name or password is incorrect");
-    // }
+   
   }
 
   
