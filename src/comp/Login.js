@@ -14,7 +14,7 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const [needSignup, setNeedsSignup] = useState(false)
   const [userFromData, setUserFromData] = useState([])
-  const {setCurrentUser, setIsLogged} = useContext(UserContext)
+  const {setCurrentUser, setIsLogged} = useContext(UserContext);
 
   const error = () => {
     message.error('user or password is incorrect');
@@ -36,10 +36,10 @@ const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     
-    const userFinder = userFromData.find( user =>  user.userName === userName   )
+
+    const userFinder = userFromData.find( user =>  user.userName === userName   )    
     const passwordMachine = (userFinder.password === password)
 
-    console.log(userFromData.find( user =>  user.userName === userName   ))
 
     if( userFinder && passwordMachine ){
       
@@ -47,12 +47,12 @@ const Login = () => {
         setCurrentUser(userName)
         success()
       
-      }else{
+      }
+      else{
         error()
-        
       }
       
-
+      
    
   }
 

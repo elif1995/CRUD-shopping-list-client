@@ -4,7 +4,7 @@ import UserContext from './context/UserContext.js';
 import Axios from 'axios';
 import './App.css';
 import { DeleteOutlined, EditOutlined , PlayCircleOutlined, PlusCircleOutlined, CloseCircleOutlined} from '@ant-design/icons';
-import { Input} from 'antd';
+import { Input, message, success} from 'antd';
 import Login from './comp/Login.js';
 
 function App  ()  {
@@ -27,9 +27,10 @@ function App  ()  {
     setIsModalOpen(false);
   };
 
-  const handleCancel = () => {
-    setIsModalOpen(false);
+  const addedItemSuccess = () => {
+    message.success('item added successfully');
   };
+ 
 
   useEffect(() =>{
     Axios.get('https://shopping-list-frenkin.herokuapp.com/read').then((response) => {
@@ -42,7 +43,7 @@ function App  ()  {
   const addToList = () => {
     Axios.post('https://shopping-list-frenkin.herokuapp.com/insert', {foodName: foodName, numberToBuy:numberToBuy, userEmail: currentUser})
     setAddFood(!addFood);
-    
+    addedItemSuccess()
   }
 
 
@@ -69,11 +70,11 @@ function App  ()  {
         </div> 
         <button onClick={handleSignOut}>sign out</button>
         {isModalOpen && <div className="adding-modal"><div className="App">
-            <button onClick={() => handleCancel}>X</button>
+            <button onClick={() => setIsModalOpen(!isModalOpen)}>X</button>
           <lable style={{fontWeight:'bold'}}>Food Name</lable>
           <input value={foodName} type="text" onChange={(e) => {setFoodName(e.target.value);}} required/>
           <lable style={{fontWeight:'bold'}}>How much to buy</lable>
-          <input value={numberToBuy} type="text" onChange={(e) => {setNumberToBuy(e.target.value);}} required/>
+          <input value={numberToBuy} type="text" onChange={(e) => {setNumberToBuy(e.target.value);}} required />
           <button className="open-modal-button" style={{background:'lightgreen', boxShadow: ' 2px 2px 3px lightgrey', border:'none', cursor: 'pointer', padding: '10px 50px', borderRadius: '5px',}} onClick={addToList }><PlusCircleOutlined style={{color: 'green'}} /></button></div></div>}
           </div>
           <br/>

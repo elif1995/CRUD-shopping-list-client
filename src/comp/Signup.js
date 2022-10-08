@@ -48,7 +48,7 @@ const Signup = ({setNeedSignup, userFromData}) => {
       Axios.post('https://shopping-list-frenkin.herokuapp.com/signup',{email: email, password: password, userName: userName})
       success()
       setNeedSignup(false);
-      // window.location.reload()
+      window.location.reload()
     }      
         
         
