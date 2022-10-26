@@ -16,3 +16,46 @@
   font-weight: bold;
   font-size: 18px;
 }
+
+.login-button{
+  background:lightgreen;
+  box-shadow:2px 2px 5px lightgrey;
+  border:none;
+  cursor:pointer;
+  padding: 10px 50px;
+  border-radius: 5px;
+  color:white;
+  font-weight: bold;
+  font-size:15px;
+}
+
+.login-button:hover{
+  background-color: white;
+  border: 5px solid lightgreen;
+  transition: 0.2s;
+  padding: 5px 50px;
+  color: black
+}
+.login-button:active{
+  background-color:lightgreen;
+  padding: 5px 40px;
+  transition: 0.1s
+}
+
+.dont-have-user-button{
+  background:transparent;
+  box-shadow:2px 2px 8px rgba(200, 200, 200, 0.67);
+  border:3px solid rgba(252, 193, 193, 0.63);
+  cursor:pointer;
+  padding: 10px 50px;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size:15px;
+}
+
+.dont-have-user-button:hover{
+  background-color:rgba(247, 161, 161, 0.63);
+  color:white;
+  transition: 0.2s;
+  padding: 10px 55px;
+}

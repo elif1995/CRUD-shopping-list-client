@@ -33,9 +33,9 @@ function App  ()  {
  
 
   useEffect(() =>{
-    Axios.get('https://shopping-list-frenkin.herokuapp.com/read').then((response) => {
+    Axios.get('https://shopping-list-frenkin.herokuapp.com/readdata').then((response) => {
       setFoodList(response.data)
-      
+      console.log(foodList)
     })
     
   },[foodList])

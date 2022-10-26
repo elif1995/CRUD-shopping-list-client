@@ -37,7 +37,7 @@ const Login = () => {
     e.preventDefault();
     
 
-    const userFinder = userFromData.find( user =>  user.userName === userName   )    
+    const userFinder = userFromData.find( user =>  user.userName === userName)  
     const passwordMachine = (userFinder.password === password)
 
 
@@ -74,9 +74,9 @@ const Login = () => {
       <lable>Password:</lable>
       <input type="password" value={password} name="password" onChange={(e) => setPassword(e.target.value)} required/>    
 
-      <button style={{ background:'transparent', boxShadow: ' 2px 2px 5px lightgrey', border:'none', cursor: 'pointer', padding: '10px 50px', borderRadius: '5px',}} type="submit" >Login</button> 
+      <button className="login-button"  type="submit" >Login</button> 
       <br/>
-      <button style={{ background:'transparent',color:'red', boxShadow: ' 2px 2px 5px lightgrey', border:'none', cursor: 'pointer', padding: '10px 50px', borderRadius: '5px',}} onClick={() => setNeedsSignup(true)} >I Dont Have A User</button>
+      <button className="dont-have-user-button"  onClick={() => setNeedsSignup(true)} >I Dont Have A User</button>
       
       </form>: <Signup userFromData={userFromData} setNeedSignup={setNeedsSignup}/>}
       </>
